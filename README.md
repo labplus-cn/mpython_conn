@@ -20,11 +20,19 @@ http://wiki.labplus.cn/index.php?title=Mpython_conn
 ```shell
 sudo pip3 install mpython_conn
 ```
+###### Upgrade
+```shell
+sudo pip3 install mpython_conn --upgrade
+```
 
 ##### Windows
 Open command prompt window as administrator mode
 ```shell
 pip3 install mpython_conn
+```
+###### Upgrade
+```shell
+pip3 install mpython_conn --upgrade
 ```
 
 ## License
