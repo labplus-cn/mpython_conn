@@ -9,7 +9,7 @@ This program depends on the micropython firmware on the mPython board.
 本程序依赖于掌控板板载的micropython固件。
 
 ### Pypi
-https://pypi.org/project/mpython-conn/0.3.1/
+https://pypi.org/project/mpython-conn/
 
 ### Wiki
 http://wiki.labplus.cn/index.php?title=Mpython_conn
