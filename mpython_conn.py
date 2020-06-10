@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-# @Time     : 2020/06/06
+# @Time     : 2020/06/10
 # @Author   : Wu Wen Jie(6692776@qq.com)
 # @FileName : mpython_conn.py
 # @Description : A transfer protocol between mPython board and PC python
-# @Version  : 0.3.0
+# @Version  : 0.3.2
 from serial.tools.list_ports import comports as list_serial_ports
 from serial import Serial
 import threading
@@ -55,9 +55,9 @@ class controller():
         'L': 0,
         'S': 0,
         'E': 0,
-        'X': 0,
-        'Y': 0,
-        'Z': 0,
+        'aX': 0,
+        'aY': 0,
+        'aZ': 0,
         'dir': '',
         'pinD': [0] * 17,
         'pinA': [0, 0, 0],
@@ -137,9 +137,9 @@ class controller():
                 self.SENSORS['L'] = data['l']
                 self.SENSORS['S'] = data['s']
                 self.SENSORS['E'] = data['e']
-                self.SENSORS['X'] = data['x']
-                self.SENSORS['Y'] = data['y']
-                self.SENSORS['Z'] = data['z']
+                self.SENSORS['aX'] = data['x']
+                self.SENSORS['aY'] = data['y']
+                self.SENSORS['aZ'] = data['z']
                 
                 if data['x'] < -0.3:
                     if 'F' != self.SENSORS['dir']:
@@ -225,7 +225,7 @@ class controller():
         message = message + "\r\n"
         message = message.encode("utf-8")
         self._serial.write(message)
-        time.sleep(len(message)/512)
+        time.sleep(0.11 + len(message)/512)
         
     
     def __init__(self, port=''):
@@ -452,7 +452,7 @@ class controller():
     def get_acceleration(self, axis):
         axis = axis.upper()
         if not axis in ['X', 'Y', 'Z']: return 0
-        return self.SENSORS[axis]
+        return self.SENSORS['a' + axis]
 
     def get_light(self):
         return self.SENSORS['L']
